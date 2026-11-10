@@ -1,7 +1,6 @@
 dssv=[]
-n = int(input("Nhập số lượng sinh viên: "))
 def nhapds():
-        for i in range(n):
+        for i in range(u):
             print(f"Nhập sinh viên thứ {i+1} :")
             masv = input("Nhập mã sinh viên: ")
             ten = input("Nhập tên: ")
@@ -65,6 +64,7 @@ def capnhat(masv):
                 sv["Học lực"] = "Trung bình"
             else:
                 sv["Học lực"] = "Yếu"
+            print("Đã cập nhật")
             return
     print("Không tìm thấy")
 
@@ -72,6 +72,7 @@ def xoasv(masv):
     for sv in dssv:
         if sv["Mã sinh viên"] == masv:
             dssv.remove(sv)
+            print("Đã xóa!")
             return
     print("Không tìm thấy")
 def timkiem(ten):
@@ -82,17 +83,18 @@ def timkiem(ten):
     print("Không tìm thấy")
 def sapxepdtb():
     dssv.sort(key=lambda sv: sv["Điểm trung bình"])
-    for sv in dssv:
-        print(sv)
 def sapxepten():
     dssv.sort(key=lambda sv: sv["Tên"])
-    for sv in dssv:
-        print(sv)
 def sapxepmasv():
     dssv.sort(key=lambda sv: sv["Mã sinh viên"])
+def demsv(tencantim):
+    dem = 0
     for sv in dssv:
-        print(sv)
+        if sv["Tên"] == tencantim:
+            dem += 1
+    return dem
 
+u = int(input("Nhập số lượng sinh viên: "))
 nhapds()
 print("Danh sách sinh viên ban đầu:")
 hienthi()
@@ -109,7 +111,6 @@ hienthi()
 
 masv = input("Nhập mã sinh viên cần xóa: ")
 xoasv(masv)
-
 print("Danh sách sau khi xóa:")
 hienthi()
 
@@ -118,9 +119,13 @@ timkiem(ten)
 
 print("Sắp xếp theo điểm trung bình:")
 sapxepdtb()
-
+hienthi()
 print("Sắp xếp theo tên:")
 sapxepten()
-
+hienthi()
 print("Sắp xếp theo mã sinh viên:")
 sapxepmasv()
+hienthi()
+
+tencantim = input("Nhập tên cần tìm: ")
+print("Số sinh viên có tên", tencantim,"là: ",demsv(tencantim))
