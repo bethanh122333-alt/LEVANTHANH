@@ -65,23 +65,21 @@ def capnhat(masv):
                 sv["Học lực"] = "Trung bình"
             else:
                 sv["Học lực"] = "Yếu"
-            print("Cập nhật thành công!")
             return
-    print("Không tìm thấy mã sinh viên!")
+    print("Không tìm thấy")
 
 def xoasv(masv):
     for sv in dssv:
         if sv["Mã sinh viên"] == masv:
             dssv.remove(sv)
-            print("Xóa thành công!")
             return
-    print("Không tìm thấy mã sinh viên!")
+    print("Không tìm thấy")
 def timkiem(ten):
     for sv in dssv:
         if sv["Tên"] == ten:
             print(sv)
             return
-    print("Không tìm thấy sinh viên!")
+    print("Không tìm thấy")
 def sapxepdtb():
     dssv.sort(key=lambda sv: sv["Điểm trung bình"])
     for sv in dssv:
